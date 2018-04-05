@@ -1,6 +1,5 @@
-# Cong-Yao Huang <span style="color:red">(103000002)</span>
 
-# Project 2 / Panorama Stitching
+# Panorama Stitching
 
 ## Overview
 The project is related to **Panorama stitching** and involve several tasks:
@@ -67,21 +66,21 @@ Prerequired packages: Anaconda python 3.6.Install cyvlfeat for fetching sift fea
 <table>
 <tr>
 Hanging</br>
-<img src="../results/Hanging.jpg" width="40%"/>
+<img src="Hanging.jpg" width="40%"/>
 
 Melakwa Lake</br>
-<img src="../results/MelakwaLake_pano.jpg" width="50%"/>
+<img src="MelakwaLake_pano.jpg" width="50%"/>
 
 UT Tower</br>
-<img src="../results/uttower_pano.jpg" width="50%"/>
+<img src="uttower_pano.jpg" width="50%"/>
 
 Yosemite</br>
-<img src="../results/yosemite_pano.jpg"/>
+<img src="yosemite_pano.jpg"/>
 
 Rainier</br>
- <img src="../results/Rainier_pano.jpg"/>
+ <img src="Rainier_pano.jpg"/>
     
 * My Image</br>
- <img src="../results/My_pano.jpg"/>
+ <img src="My_pano.jpg"/>
 </tr>
 </table>
