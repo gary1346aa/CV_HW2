@@ -10,7 +10,7 @@ from scipy.io import loadmat
 
 
 #%% SIFTSimpleMatcher function
-def SIFTSimpleMatcher(descriptor1, descriptor2, THRESH=0.49):
+def SIFTSimpleMatcher(descriptor1, descriptor2, THRESH=0.7):
     '''
     SIFTSimpleMatcher 
     Match one set of SIFT descriptors (descriptor1) to another set of
@@ -40,11 +40,19 @@ def SIFTSimpleMatcher(descriptor1, descriptor2, THRESH=0.49):
     #                              YOUR CODE HERE                               #
     #                                                                           #
     #############################################################################
-    
+    match = []
+
+    for i in range(descriptor1.shape[0]):
+        Tile = np.tile(descriptor1[i,:],(descriptor2.shape[0],1))
+        Euclid = np.sqrt(np.sum((Tile-descriptor2)**2, axis=1))
+
+        if sorted(Euclid)[0] < sorted(Euclid)[1]*THRESH:
+            match.append([i,np.argmin(Euclid)])
+
     #############################################################################
     #                                                                           #
     #                             END OF YOUR CODE                              #
     #                                                                           #
     #############################################################################   
     
-    return match
+    return np.array(match)

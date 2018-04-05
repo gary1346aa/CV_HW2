@@ -58,7 +58,7 @@ def MultipleStitch(Images, Trans, fileName='../results/pano.jpg'):
 
     #%% Choose reference image Iref
     refIdx = np.floor(median(range(len(Images)))).astype('int')
-    refIdx = 3
+    #refIdx = 3
 
     #%% Estimate the largest possible panorama size
     [ncols, nrows] = next(iter(Images.values())).size
@@ -87,8 +87,7 @@ def MultipleStitch(Images, Trans, fileName='../results/pano.jpg'):
     H = np.eye(3)
     Pano = affineTransform(Images[refIdx], H, outBounds, nrows, ncols)
     Pano.setflags(write=1)
-    plt.imshow(Pano)      
-                       
+    plt.imshow(Pano)
 
     #%% Transform the Images from the left side of Iref using the correct Transformations you computed
     for idx in range(refIdx-1,-1,-1):
@@ -134,7 +133,9 @@ def MultipleStitch(Images, Trans, fileName='../results/pano.jpg'):
     
     # Savefig
     result = Image.fromarray(Pano)
+    result = result.convert("RGB")
     result.save(fileName)
+    # plt.imshow(result)
     return Pano 
 
 
@@ -172,14 +173,20 @@ def makeTransformToReferenceFrame(i_To_iPlusOne_Transform, currentFrameIndex, re
     # refFrameIndex (this is the harder case).                                  
     #                                                                           
     # HINT 2: You can use the pinv function to invert a Transformation.         
-    
+
     #############################################################################
     #                                                                           #
     #                 YOUR CODE HERE: Calculate T as defined above.             #
     #                                                                           #
     #############################################################################
     
-    
+    T = np.eye(3);
+    for i in range(refFrameIndex, currentFrameIndex, -1 + 2*(currentFrameIndex > refFrameIndex)):
+        if currentFrameIndex < refFrameIndex :
+            T = np.matmul(T, i_To_iPlusOne_Transform[i-1])
+        elif currentFrameIndex > refFrameIndex :
+            T = np.matmul(T, np.linalg.inv(i_To_iPlusOne_Transform[i]))
+
     #############################################################################
     #                                                                           #
     #                       ND OF YOUR CODE                                     #

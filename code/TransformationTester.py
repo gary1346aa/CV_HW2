@@ -13,9 +13,12 @@ from RANSACFit import RANSACFit
 from PairStitch import PairStitch
 
 #%% Paths
-saveFileName = '../results/uttower_pano.jpg'
-img1Path = '../data/uttower1.jpg'
-img2Path = '../data/uttower2.jpg'
+#saveFileName = '../results/uttower_pano.jpg'
+#img1Path = '../data/uttower1.jpg'
+#img2Path = '../data/uttower2.jpg'
+saveFileName = '../results/Hanging.jpg'
+img1Path = '../data/Hanging1.png'
+img2Path = '../data/Hanging2.png'
 
 #%% Load image
 img1 = Image.open(img1Path, 'r')

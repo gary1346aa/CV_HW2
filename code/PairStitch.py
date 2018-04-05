@@ -57,6 +57,7 @@ def PairStitch(img1, img2, H, fileName='pano.jpg'):
     
     # Savefig
     result = Image.fromarray(Pano)
+    result = result.convert("RGB")
     result.save(fileName)
     
     return Pano

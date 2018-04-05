@@ -92,7 +92,6 @@ def ComputeError(H, pt1, pt2, match):
         Error is measured as the Euclidean distance between (transformed pt1) 
         and pt2 in homogeneous coordinates.
     '''
-
     #############################################################################
     #                                                                           #
     #                              YOUR CODE HERE                               #
@@ -104,7 +103,13 @@ def ComputeError(H, pt1, pt2, match):
     # pt1(match(2,1),:), etc. (You may use 'for' loops if this is too
     # confusing, but understanding it will make your code simple and fast.)
     
-    
+    test1 = pt1[match[:,0],:]
+    test2 = pt2[match[:,1],:]
+
+    P1 = np.concatenate((pt1[match[:,0],:],np.ones((len(match), 1))),axis = 1)
+    P2 = np.concatenate((pt2[match[:,1],:],np.ones((len(match), 1))),axis = 1)
+
+    dists = np.sqrt(np.sum((np.matmul(H,P1.T).T-P2)**2,axis=1))
     
     #############################################################################
     #                                                                           #
